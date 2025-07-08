@@ -1,5 +1,5 @@
 
-# An attendance system utilising facial reccognition using python and openCV
+# An attendance system using facial reccognition utillising python and openCV (Haar Cascade method)
 
 [![forthebadge made-with-python](http://ForTheBadge.com/images/badges/made-with-python.svg)](https://www.python.org/)                 
 [![Python 3.9](https://img.shields.io/badge/python-3.9-blue.svg)](https://www.python.org/downloads/release/python-390/) 
@@ -7,12 +7,14 @@
 A fork of the same project by Patelrahul4884, with fix applied to:
 - Ensure cross compability with other OS by using 'os.path.join' for the file paths references.
 
+### Pre-requisite
+- Python3 + tkinter module
+- Pip module
+
 ### What steps you have to follow??
-- Download or clone my Repository to your device
-- type `pip install -r requirements.txt` in command prompt(this will install required package for project)
-- Create a `TrainingImage` folder in a project folder.
-- open `attendance.py` and `automaticAttendance.py`, change all the path accoriding to your system
-- Run `attandance.py` file
+- Download or clone the Repository to your device.
+- type `pip install -r requirements.txt` in command prompt/terminal. This will install required package for project.
+- Run `attandance.py` file with 'python3 attendance.py' in command prompt/terminal.
 
 ### Project flow & explaination
 - After you run the project you have to register your face so that system can identify you, so click on register new student
