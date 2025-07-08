@@ -4,7 +4,8 @@
 [![forthebadge made-with-python](http://ForTheBadge.com/images/badges/made-with-python.svg)](https://www.python.org/)                 
 [![Python 3.9](https://img.shields.io/badge/python-3.9-blue.svg)](https://www.python.org/downloads/release/python-390/) 
 
-A fork of the same project by Patelrahul4884, with fix applied to:
+A fork of the same project by Patelrahul4884, https://github.com/Patelrahul4884/Attendance-Management-system-using-face-recognition 
+with fix applied to:
 - Ensure cross compability with other OS by using 'os.path.join' for the file paths references.
 
 ### Pre-requisite
