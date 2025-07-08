@@ -1,8 +1,11 @@
 
-# Face based attendance system using python and openCV
+# An attendance system utilising facial reccognition using python and openCV
 
 [![forthebadge made-with-python](http://ForTheBadge.com/images/badges/made-with-python.svg)](https://www.python.org/)                 
 [![Python 3.9](https://img.shields.io/badge/python-3.9-blue.svg)](https://www.python.org/downloads/release/python-390/) 
+
+A fork of the same project by Patelrahul4884, with fix applied to:
+- Ensure cross compability with other OS by using 'os.path.join' for the file paths references.
 
 ### What steps you have to follow??
 - Download or clone my Repository to your device
@@ -35,4 +38,4 @@
 ## Attendance in tabular format 
 <img src='https://github.com/Patelrahul4884/Attendance-Management-system-using-face-recognition/blob/master/Project%20Snap/7.PNG'>
 
-## Just follow me and Star⭐ my repository
+## Do follow Patelrahul4884 and Star⭐ the original repository
