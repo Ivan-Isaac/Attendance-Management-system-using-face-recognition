@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter import *
-import os, cv2
+import os, cv2 # os is already imported, good.
 import shutil
 import csv
 import numpy as np
@@ -28,19 +28,34 @@ def text_to_speech(user_text):
     engine.say(user_text)
     engine.runAndWait()
 
+# --- START OF PATH REFACTORING ---
 
-haarcasecade_path = "haarcascade_frontalface_default.xml"
-trainimagelabel_path = (
-    "./TrainingImageLabel/Trainner.yml"
-)
-trainimage_path = "/TrainingImage"
+# Use os.path.join for all paths
+haarcasecade_path = "haarcascade_frontalface_default.xml" # This is a direct filename, no join needed here
+
+trainimagelabel_dir = "TrainingImageLabel"
+trainimagelabel_path = os.path.join(".", trainimagelabel_dir, "Trainner.yml")
+
+trainimage_dir = "TrainingImage"
+trainimage_path = os.path.join(".", trainimage_dir)
+
+studentdetail_dir = "StudentDetails"
+studentdetail_path = os.path.join(".", studentdetail_dir, "studentdetails.csv")
+
+attendance_path = "Attendance" # This is a base directory name, still good as a string
+
+# Ensure all necessary base directories exist
 if not os.path.exists(trainimage_path):
     os.makedirs(trainimage_path)
 
-studentdetail_path = (
-    "./StudentDetails/studentdetails.csv"
-)
-attendance_path = "Attendance"
+if not os.path.exists(os.path.join(".", trainimagelabel_dir)): # Check for the directory of Trainner.yml
+    os.makedirs(os.path.join(".", trainimagelabel_dir))
+
+if not os.path.exists(os.path.join(".", studentdetail_dir)): # Check for the directory of studentdetails.csv
+    os.makedirs(os.path.join(".", studentdetail_dir))
+
+# --- END OF PATH REFACTORING ---
+
 
 window = Tk()
 window.title("Face Recognizer")
@@ -242,7 +257,7 @@ def TakeImageUI():
             l1,
             l2,
             haarcasecade_path,
-            trainimage_path,
+            trainimage_path, # Path passed correctly
             message,
             err_screen,
             text_to_speech,
@@ -269,8 +284,8 @@ def TakeImageUI():
     def train_image():
         trainImage.TrainImage(
             haarcasecade_path,
-            trainimage_path,
-            trainimagelabel_path,
+            trainimage_path, # Path passed correctly
+            trainimagelabel_path, # Path passed correctly
             message,
             text_to_speech,
         )

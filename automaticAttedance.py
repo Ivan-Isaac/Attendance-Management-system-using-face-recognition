@@ -11,14 +11,21 @@ import time
 import tkinter.ttk as tkk
 import tkinter.font as font
 
+# Correcting path separators to be platform-independent
 haarcasecade_path = "haarcascade_frontalface_default.xml"
-trainimagelabel_path = (
-    "TrainingImageLabel\\Trainner.yml"
-)
-trainimage_path = "TrainingImage"
-studentdetail_path = (
-    "StudentDetails\\studentdetails.csv"
-)
+trainimagelabel_path = os.path.join("TrainingImageLabel", "Trainner.yml") # Use os.path.join
+trainimage_path = "TrainingImage" # This one is a directory name, so it's fine as is or can be os.path.join(".", "TrainingImage")
+studentdetail_path = os.path.join("StudentDetails", "studentdetails.csv") # Use os.path.join
+attendance_path = "Attendance"
+
+# Make sure these directories exist when the script runs
+if not os.path.exists(os.path.dirname(trainimagelabel_path)):
+    os.makedirs(os.path.dirname(trainimagelabel_path))
+if not os.path.exists(studentdetail_path.split(os.sep)[0]): # Check for StudentDetails directory
+    os.makedirs(studentdetail_path.split(os.sep)[0])
+if not os.path.exists(attendance_path):
+    os.makedirs(attendance_path)
+    
 attendance_path = "Attendance"
 # for choose subject and fill attendance
 def subjectChoose(text_to_speech):
@@ -225,9 +232,21 @@ def subjectChoose(text_to_speech):
             t = "Please enter the subject name!!!"
             text_to_speech(t)
         else:
-            os.startfile(
-                f"Attendance\\{sub}"
-            )
+            # Use os.path.join here as well for cross-platform compatibility
+            # On Linux, os.startfile is not standard. You typically use subprocess.run or os.system
+            #to open a directory. For simplicity, if you intend to open the folder in the default file browser:
+            folder_to_open = os.path.join(attendance_path, sub)
+            if os.path.exists(folder_to_open):
+                import subprocess
+            try:
+                # For Linux, 'xdg-open' is common for opening files/directories with default app
+                subprocess.Popen(['xdg-open', folder_to_open])
+            except FileNotFoundError:
+                print(f"Error: xdg-open not found. Cannot open folder {folder_to_open}")
+                # Fallback for other systems or error handling
+            else:
+                print(f"Folder not found: {folder_to_open}")
+                text_to_speech(f"Attendance folder for {sub} not found.")
 
     attf = tk.Button(
         subject,
