@@ -1,5 +1,5 @@
 
-# An attendance system using facial reccognition utillising python and openCV (Haar Cascade method)
+# An attendance system using facial reccognition with python and openCV (Haar Cascade method)
 
 [![forthebadge made-with-python](http://ForTheBadge.com/images/badges/made-with-python.svg)](https://www.python.org/)                 
 [![Python 3.9](https://img.shields.io/badge/python-3.9-blue.svg)](https://www.python.org/downloads/release/python-390/) 
